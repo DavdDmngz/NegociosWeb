@@ -29,10 +29,10 @@ $products = $stmt->fetchAll();
         <tbody>
             <?php foreach ($products as $product): ?>
                 <tr>
-                    <td><?= htmlspecialchars($product['id']) ?></td>
-                    <td><?= htmlspecialchars($product['name']) ?></td>
-                    <td><?= htmlspecialchars($product['description']) ?></td>
-                    <td><?= htmlspecialchars($product['price']) ?></td>
+                    <td><?= scape($product['id']) ?></td>
+                    <td><?= scape($product['name']) ?></td>
+                    <td><?= scape($product['description']) ?></td>
+                    <td><?= scape($product['price']) ?></td>
                     <td>
                         <a href="update.php?id=<?= $product['id'] ?>">Editar</a>
                         <a href="delete.php?id=<?= $product['id'] ?>" onclick="return confirm('¿Está seguro de que desea eliminar este producto?');">Eliminar</a>
