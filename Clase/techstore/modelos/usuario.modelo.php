@@ -1,36 +1,59 @@
 <?php
 
-class Usuario {
-    private $db;
+class Usuario{
 
-    public function __construct($db) {
-        $this->db = $db;
+    private $pdo;
+
+    private $user_id;
+    private $email;
+    private $password;
+
+    public function __CONSTRUCT(){
+        $this->pdo = BaseDatos::conectar();
     }
 
-    public function registrarUsuario($email, $password) {
-        try {
-            // Preparar la consulta SQL para insertar un nuevo usuario
-            $sql = "INSERT INTO usuarios (email, password) VALUES (:email, :password)";
-            $stmt = $this->db->prepare($sql);
+    public function getusr_id() : ?int{
+        return $this->user_id;
+    }
 
-            // Bind de los parámetros
-            $stmt->bindParam(':email', $email);
-            $stmt->bindParam(':password', $password);
+    public function setusr_id(int $id){
+        $this->user_id=$id;
+    }
 
-            // Ejecutar la consulta
-            $stmt->execute();
+    public function getusr_email() : ?string{
+        return $this->user_email;
+    }
 
-            // Comprobar si se insertó correctamente (opcional)
-            if ($stmt->rowCount() > 0) {
-                return true; // Éxito
-            } else {
-                return false; // Falló la inserción
-            }
-        } catch (PDOException $e) {
-            echo "Error al registrar usuario: " . $e->getMessage();
-            return false;
-        }
+    public function setusr_email(string $email){
+        $this->user_email=$email;
+    }
+
+    public function getusr_pass() : ?string{
+        return $this->user_pass;
+    }
+
+    public function setusr_pass(string $password){
+        $this->user_pass=$password;
+    }
+
+    public function Cantidad(){
+    try{
+        $consulta = $this->pdo->prepare("SELECT SUM(id) as CANTIDAD FROM techstore.usuarios");
+        $consulta->execute();
+        return $consulta->fetch(PDO::FETCH_OBJ);
+    } catch(Exception $e) {
+        die($e->getMessage());
     }
 }
 
-?>
+public function TotalUsuarios(){
+    try{
+        $consulta = $this->pdo->prepare("SELECT * FROM techstore.usuarios");
+        $consulta->execute();
+        return $consulta->fetchAll(PDO::FETCH_OBJ);
+    } catch(Exception $e) {
+        die($e->getMessage());
+    }
+}
+
+}

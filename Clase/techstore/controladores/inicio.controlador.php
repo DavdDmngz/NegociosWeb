@@ -1,21 +1,17 @@
 <?php
-    class ControladorInicio{
-        private $modelo;
 
-        public function __construct(){
-            //$this->modelo=new Producto();
-        }
+require_once "modelos/usuario.modelo.php";
 
-        public function Inicio(){
-            require_once('config/basedatos.php');
-            $baseDatos = new BaseDatos();
-            try{
-                $conexion = $baseDatos->conectar();
-                echo "Conexión exitosa a la base de datos";
-                }catch (PDOException $e){
-                echo "Error de conexión: " . $e->getMessage();
-                }
-            require_once "vistas/inicio/principal.php";
-        }
+class InicioControlador{
+    private $modelo;
+
+    public function __CONSTRUCT(){
+        $this->modelo=new Usuario();
     }
-?>
+
+    public function Inicio(){
+        require_once "vistas/encabezado.php";
+        require_once "vistas/inicio/principal.php";
+        require_once "vistas/pie.php";
+    }
+}
