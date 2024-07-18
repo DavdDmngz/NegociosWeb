@@ -10,7 +10,7 @@ class BaseDatos {
         $this->host= 'localhost';
         $this->db= 'techstore';
         $this->usuario= 'root';
-        $this->contrasena= 'unicah123';
+        $this->contrasena= '0955';
         $this->caracteres= 'utf8';       //codificacion para incluir teclas especiales, como el acento
     }
     function conectar(){
