@@ -2,7 +2,7 @@
 
 require_once "modelos/cuenta.modelo.php";
 
-class InicioControlador{
+class CuentaControlador{
     private $modelo;
 
     public function __CONSTRUCT(){
@@ -11,7 +11,6 @@ class InicioControlador{
 
     public function Inicio(){
         require_once "vistas/encabezado.php";
-        require_once "vistas/inicio/principal.php";
-        require_once "vistas/pie.php";
+        require_once "vistas/cuenta/index.php";
     }
 }
