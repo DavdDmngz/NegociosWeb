@@ -66,11 +66,11 @@ class Producto{
         $this->precio_venta=$precio_venta;
     }
 
-    public function getpro_mar() : ?int{
+    public function getpro_mar() : ?string{
         return $this->marca;
     }
 
-    public function setpro_mar(int $marca){
+    public function setpro_mar(string $marca){
         $this->marca=$marca;
     }
 
@@ -82,11 +82,11 @@ class Producto{
         $this->cantidad=$cantidad;
     }
 
-    public function getpro_img() : ?int{
+    public function getpro_img() : ?string{
         return $this->imagen;
     }
 
-    public function setpro_img(int $imagen){
+    public function setpro_img(string $imagen){
         $this->imagen=$imagen;
     }
 
@@ -100,18 +100,44 @@ public function Listar(){
     }
 }
 
-public function Insertar(Usuario $user){
+public function Insertar(Producto $prod){
     try{
-        $consulta="INSERT INTO usuarios (nombre, apellido, email, contrasena, rol) VALUES (?,?,?,?);";
+        $consulta="INSERT INTO productos (nombre, descripcion, tipo_producto, precio_compra, precio_venta, marca, cantidad, imagen) VALUES (?,?,?,?,?,?,?,?,?);";
         $this->pdo->prepare($consulta)
                 ->execute(array(
-                    $user->getusr_nombre(),
-                    $user->getusr_apellido(),
-                    $user->getusr_email(),
-                    $user->getusr_pass(),
+                    $prod->getprod_nombre(),
+                    $prod->getprod_descripcion(),
+                    $prod->getprod_tipo_producto(),
+                    $prod->getprod_precio_compra(),
+                    $prod->getprod_precio_venta(),
+                    $prod->getprod_marca(),
+                    $prod->getprod_cantidad(),
+                    $prod->getprod_imagen(),
+                    
                 ));
     } catch(Exception $e) {
         die($e->getMessage());
     }
 }
+
+// EDITAR PRODUCTO
+
+public function obtenerProductoPorId($id) {
+    $sentencia = $this->db->prepare("SELECT * FROM productos WHERE id = ?;");
+    $sentencia->execute([$id]);
+    return $sentencia->fetch(PDO::FETCH_OBJ);
 }
+
+public function actualizarProducto($id, $nombre, $precio, $descripcion) {
+    $sentencia = $this->db->prepare("UPDATE productos SET nombre = ?, descripcion = ?, tipo_producto = ?, precio_compra = ?, precio_venta = ?, marca = ?, cantidad = ?, imagen = ? WHERE id = ?;");
+    return $sentencia->execute([$nombre, $precio, $descripcion, $id]);
+}
+
+// ELIMINAR PRODUCTO
+public function eliminarProducto($id) {
+    $sentencia = $this->db->prepare("DELETE FROM productos WHERE id = ?;");
+    return $sentencia->execute([$id]);
+}
+
+}
+?>
