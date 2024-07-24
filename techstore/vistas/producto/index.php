@@ -39,37 +39,45 @@
 </div>
 
 <!-- INSERTAR PROD-->
-<?php include_once "encabezado.php" ?>
 <div class="col-xs-12">
-	<h1>Nuevo producto</h1>
-	<form method="post" action="nuevo.php">
-		<label for="nombre">Nombre del producto:</label>
-		<input class="form-control" name="nombre" required type="text" id="nombre" placeholder="Escribe el nombre">
-
-		<label for="descripcion">Descripción:</label>
-		<textarea required id="descripcion" name="descripcion" cols="30" rows="5" class="form-control"></textarea>
-        
-        <label for="tipo">Tipo de Producto:</label>
-        <input class="form-control" name="tipo" required type="text" id="tipo" placeholder="Tipo de producto">
-
-		<label for="precioVenta">Precio de venta:</label>
-		<input class="form-control" name="precioVenta" required type="number" id="precioVenta" placeholder="Precio de venta">
-
-		<label for="precioCompra">Precio de compra:</label>
-		<input class="form-control" name="precioCompra" required type="number" id="precioCompra" placeholder="Precio de compra">
-
-		<label for="marca">Marca:</label>
-		<input class="form-control" name="marca" required type="text" id="marca" placeholder="Marca del producto">
-		
-        <label for="cantidad">Cantidad:</label>
-		<input class="form-control" name="cantidad" required type="number" id="cantidad" placeholder="Cantidad del producto">
-
-        <label for="imagen">Imagen del Producto:</label>
-        <input class="form-control" name="imagen" type="file" id="imagen">
-        <br><br><input class="btn btn-info" type="submit" value="Guardar">
-	</form>
+	<h3>Nuevo producto</h3>
+    <form method="POST" action="?c=producto&a=crear" class="formulario" id="formulario">
+        <div class="form-group">
+            <label for="nombre">Nombre</label>
+            <input type="text" class="form-control" name="nombre" placeholder="Nombre" required>
+        </div>
+        <div class="form-group">
+            <label for="descripcion">Descripción</label>
+            <input type="text" class="form-control" name="descripcion" placeholder="Descripción" required>
+        </div>
+        <div class="form-group">
+            <label for="tipo_producto">Tipo</label>
+            <input type="text" class="form-control" name="tipo_producto" placeholder="Tipo" required>
+        </div>
+        <div class="form-group">
+            <label for="precio_venta">Precio venta</label>
+            <input type="text" class="form-control" name="precio_venta" placeholder="Precio venta" required>
+        </div>
+        <div class="form-group">
+            <label for="precio_compra">Precio compra</label>
+            <input type="text" class="form-control" name="precio_compra" placeholder="Precio compra" required>
+        </div>
+        <div class="form-group">
+            <label for="marca">Marca</label>
+            <input type="text" class="form-control" name="marca" placeholder="Marca" required>
+        </div>
+        <div class="form-group">
+            <label for="cantidad">Cantidad</label>
+            <input type="text" class="form-control" name="cantidad" placeholder="CAntidad" required>
+        </div>
+        <div>
+            <label for="imagen">Imagen del Producto:</label>
+            <input class="form-control" name="imagen" type="file" id="imagen">
+        </div>
+        <button type="submit" class="btn btn-primary">Aceptar</button>
+        <hr />
+    </form>
 </div>
-<?php include_once "pie.php" ?>
 
 
 <!-- EDITAR PROD-->

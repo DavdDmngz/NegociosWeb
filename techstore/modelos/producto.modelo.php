@@ -26,67 +26,67 @@ class Producto{
         $this->id=$id;
     }
 
-    public function getpro_nom() : ?string{
+    public function getpro_nombre() : ?string{
         return $this->nombre;
     }
 
-    public function setpro_nom(string $nombre){
+    public function setpro_nombre(string $nombre){
         $this->nombre=$nombre;
     }
 
-    public function getpro_desc() : ?string{
+    public function getpro_descripcion() : ?string{
         return $this->descripcion;
     }
 
-    public function setpro_desc(string $descripcion){
+    public function setpro_descripcion(string $descripcion){
         $this->descripcion=$descripcion;
     }
 
-    public function getpro_tipo() : ?int{
+    public function getpro_tipo_producto() : ?int{
         return $this->tipo_producto;
     }
 
-    public function setpro_tipo(int $tipo_producto){
+    public function setpro_tipo_producto(int $tipo_producto){
         $this->tipo_producto=$tipo_producto;
     }
 
-    public function getpro_pre_c() : ?float{
+    public function getpro_precio_compra() : ?float{
         return $this->precio_compra;
     }
 
-    public function setpro_pre_c(float $precio_compra){
+    public function setpro_precio_compra(float $precio_compra){
         $this->precio_compra=$precio_compra;
     }
 
-    public function getpro_pre_v() : ?float{
+    public function getpro_precio_venta() : ?float{
         return $this->precio_venta;
     }
 
-    public function setpro_pre_v(float $precio_venta){
+    public function setpro_precio_venta(float $precio_venta){
         $this->precio_venta=$precio_venta;
     }
 
-    public function getpro_mar() : ?string{
+    public function getpro_marca() : ?string{
         return $this->marca;
     }
 
-    public function setpro_mar(string $marca){
+    public function setpro_marca(string $marca){
         $this->marca=$marca;
     }
 
-    public function getpro_cant() : ?int{
+    public function getpro_cantidad() : ?int{
         return $this->cantidad;
     }
 
-    public function setpro_cant(int $cantidad){
+    public function setpro_cantidad(int $cantidad){
         $this->cantidad=$cantidad;
     }
 
-    public function getpro_img() : ?string{
+    public function getpro_imagen() : ?string{
         return $this->imagen;
     }
 
-    public function setpro_img(string $imagen){
+    public function setpro_imagen(string $imagen){
         $this->imagen=$imagen;
     }
 
@@ -100,19 +100,19 @@ public function Listar(){
     }
 }
 
-public function Insertar(Producto $prod){
+public function Insertar(Producto $producto){
     try{
-        $consulta="INSERT INTO productos (nombre, descripcion, tipo_producto, precio_compra, precio_venta, marca, cantidad, imagen) VALUES (?,?,?,?,?,?,?,?,?);";
+        $consulta="INSERT INTO productos (nombre, descripcion, tipo_producto, precio_compra, precio_venta, marca, cantidad, imagen) VALUES (?,?,?,?,?,?,?,?);";
         $this->pdo->prepare($consulta)
                 ->execute(array(
-                    $prod->getprod_nombre(),
-                    $prod->getprod_descripcion(),
-                    $prod->getprod_tipo_producto(),
-                    $prod->getprod_precio_compra(),
-                    $prod->getprod_precio_venta(),
-                    $prod->getprod_marca(),
-                    $prod->getprod_cantidad(),
-                    $prod->getprod_imagen(),
+                    $producto->getpro_nombre(),
+                    $producto->getpro_descripcion(),
+                    $producto->getpro_tipo_producto(),
+                    $producto->getpro_precio_compra(),
+                    $producto->getpro_precio_venta(),
+                    $producto->getpro_marca(),
+                    $producto->getpro_cantidad(),
+                    $producto->getpro_imagen(),
                     
                 ));
     } catch(Exception $e) {
@@ -123,19 +123,19 @@ public function Insertar(Producto $prod){
 // EDITAR PRODUCTO
 
 public function obtenerProductoPorId($id) {
-    $sentencia = $this->db->prepare("SELECT * FROM productos WHERE id = ?;");
+    $sentencia = $this->pdo->prepare("SELECT * FROM productos WHERE id = ?;");
     $sentencia->execute([$id]);
     return $sentencia->fetch(PDO::FETCH_OBJ);
 }
 
 public function actualizarProducto($id, $nombre, $precio, $descripcion) {
-    $sentencia = $this->db->prepare("UPDATE productos SET nombre = ?, descripcion = ?, tipo_producto = ?, precio_compra = ?, precio_venta = ?, marca = ?, cantidad = ?, imagen = ? WHERE id = ?;");
+    $sentencia = $this->pdo->prepare("UPDATE productos SET nombre = ?, descripcion = ?, tipo_producto = ?, precio_compra = ?, precio_venta = ?, marca = ?, cantidad = ?, imagen = ? WHERE id = ?;");
     return $sentencia->execute([$nombre, $precio, $descripcion, $id]);
 }
 
 // ELIMINAR PRODUCTO
 public function eliminarProducto($id) {
-    $sentencia = $this->db->prepare("DELETE FROM productos WHERE id = ?;");
+    $sentencia = $this->pdo->prepare("DELETE FROM productos WHERE id = ?;");
     return $sentencia->execute([$id]);
 }
 

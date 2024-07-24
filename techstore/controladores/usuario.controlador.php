@@ -25,9 +25,6 @@ class UsuarioControlador{
         require_once "vistas/cuenta/registro.php";
         require_once "vistas/scripts.php";
     }
-    public function Prueba(){
-        require_once "vistas/cuenta/dot.html";
-    }
 
     public function Crear(){
         $user=new Usuario();
