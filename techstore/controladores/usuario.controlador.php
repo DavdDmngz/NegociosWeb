@@ -11,22 +11,22 @@ class UsuarioControlador{
 
     public function Inicio(){
         require_once "vistas/encabezado.php";
-        require_once "vistas/cuenta/index.php";
+        require_once "vistas/usuario/index.php";
         require_once "vistas/scripts.php";
     }
     public function Login(){
         require_once "vistas/encabezado.php";
-        require_once "vistas/cuenta/inicio.sesion.php";
+        require_once "vistas/usuario/inicio.sesion.php";
         require_once "vistas/scripts.php";
     }
     
     public function Signup(){
         require_once "vistas/encabezado.php";
-        require_once "vistas/cuenta/registro.php";
+        require_once "vistas/usuario/registro.php";
         require_once "vistas/scripts.php";
     }
     public function Prueba(){
-        require_once "vistas/cuenta/dot.html";
+        require_once "vistas/usuario/dot.html";
     }
 
     public function Crear(){

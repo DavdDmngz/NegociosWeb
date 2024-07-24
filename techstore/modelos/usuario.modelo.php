@@ -98,17 +98,4 @@ public function Insertar(Usuario $user){
         die($e->getMessage());
     }
 }
-
-public function Validar(Usuario $user){
-    try{
-        $consulta="SELECT COUNT(*) FROM usuarios WHERE email = :email AND contrasena = :contrasena LIMIT 1";
-        $this->pdo->prepare($consulta)
-                ->execute(array(
-                    $user->getusr_email(),
-                    $user->getusr_pass(),
-                ));
-    } catch(Exception $e) {
-        die($e->getMessage());
-    }
-}
 }
