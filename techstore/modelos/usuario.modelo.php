@@ -113,6 +113,17 @@ class Usuario {
             die($e->getMessage());
         }
     }
+    public function EmailExiste($email) {
+        try {
+            $consulta = $this->pdo->prepare("SELECT COUNT(*) FROM usuarios WHERE email = ?");
+            $consulta->execute(array($email));
+            $count = $consulta->fetchColumn();
+            return $count > 0;
+        } catch(Exception $e) {
+            die($e->getMessage());
+        }
+    }
+    
     
 }
 ?>

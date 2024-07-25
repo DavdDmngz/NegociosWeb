@@ -14,7 +14,7 @@
                         <div class="user-profile pull-right">
                             <h4 class="user-name dropdown-toggle" data-toggle="dropdown">Cuenta<i class="fa fa-angle-down"></i></h4>
                             <div class="dropdown-menu">
-                                <a class="dropdown-item" href="?c=usuario&a=log">Cerrar sesión</a>
+                                <a class="dropdown-item" href="?c=usuario&a=logout">Cerrar sesión</a>
                                 <a class="dropdown-item" href="#">Configuración</a>
                             </div>
                             <ul class="notification-area pull-right">

@@ -48,7 +48,7 @@
                     </div>
                     <div class="form-footer text-center mt-5">
                         <p class="text-muted">¿No tienes una cuenta? <a href="?c=usuario&a=signup">Crear una cuenta.</a></p>
-                        <a href="?c=usuario&a=inicio">Iniciar sesión después</a>
+                        <a href="?c=inicio&a=inicio">Iniciar sesión después</a>
                     </div>
                 </div>
             </form>

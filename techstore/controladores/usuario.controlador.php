@@ -18,12 +18,11 @@ class UsuarioControlador {
                 require_once "vistas/sidebar.vertical.php";
                 require_once "vistas/admin/index.php"; // Vista para administrador
             } else {
-                require_once "vistas/sidebar.horizontal.php";
+                require_once "vistas/menu.php";
                 require_once "vistas/usuario/index.php"; // Vista para usuarios regulares
             }
         } else {
-            require_once "vistas/header.php";
-            require_once "vistas/inicio/principal.php";
+            $this->Logout();
         }
         require_once "vistas/foother.php";
         require_once "vistas/scripts.php";
@@ -48,11 +47,15 @@ class UsuarioControlador {
         $user->setusr_email($_POST['email']);
         $user->setusr_pass($_POST['contrasena']);
         $user->setusr_rol(3); // Asignar rol por defecto, cambiar según sea necesario
-
-        $this->modelo->Insertar($user);
-
-        header("location:?c=usuario&a=inicio");
+    
+        if ($this->modelo->EmailExiste($user->getusr_email())) {
+            header("location:?c=usuario&a=signup&error=email_exists");
+        } else {
+            $this->modelo->Insertar($user);
+            header("location:?c=usuario&a=inicio");
+        }
     }
+    
 
     public function TryLogin() {
         $email = $_POST['email'];
@@ -71,7 +74,7 @@ class UsuarioControlador {
 
     public function Logout() {
         Session::destroy();
-        header("location:?c=usuario&a=inicio");
+        header("location:?c=inicio&a=inicio");
     }
 }
 ?>

@@ -6,7 +6,7 @@
                         <div class="horizontal-menu">
                             <nav>
                                 <ul id="nav_menu">
-                                    <li><a href="maps.html"><i class="ti-map-alt"></i> <span>Inicio</span></a></li>
+                                    <li><a href="?c=inicio&a=inicio"><i class="ti-map-alt"></i> <span>Inicio</span></a></li>
                                     <li>
                                         <a href="javascript:void(0)"><i class="ti-map-alt"></i><span>Inicio</span></a>
                                         <ul class="submenu">
