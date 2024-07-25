@@ -13,7 +13,6 @@ class UsuarioControlador {
     public function Inicio() {     
         require_once "vistas/style.php";
         if (Session::isLoggedIn()) {
-            require_once "vistas/header.session.php";
             if (Session::isAdmin()) {
                 require_once "vistas/sidebar.vertical.php";
                 require_once "vistas/admin/index.php"; // Vista para administrador

@@ -14,7 +14,7 @@ class CategoriaControlador{
         require_once "vistas/header.php";
         require_once "vistas/menu.php";
         require_once "vistas/style.php";
-        require_once "vistas/categoria/formulario.php";
+        require_once "vistas/categoria/index.php";
         require_once "vistas/scripts.php";
     }
 

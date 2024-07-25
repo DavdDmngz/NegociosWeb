@@ -15,10 +15,10 @@
                             <li class="collapsed">
                                 <a href="javascript:void(0)" aria-expanded="true"><i class="ti-layout-grid2-alt"></i><span>Catálogo</span></a>
                                 <ul class="collapse">
-                                    <li><a href="#">Productos</a></li>
-                                    <li><a href="#">Añadir producto</a></li>
+                                    <li><a href="?c=producto&a=inicio">Productos</a></li>
+                                    <li><a href="?c=producto&a=agregar">Añadir producto</a></li>
                                     <li><a href="#">Categorías</a></li>
-                                    <li><a href="?c=categoria&a=crear">Agregar Categoría</a></li>
+                                    <li><a href="?c=categoria&a=inicio">Agregar Categoría</a></li>
                                 </ul>
                             </li>
                             <li class="collapsed">

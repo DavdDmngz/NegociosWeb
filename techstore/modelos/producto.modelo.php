@@ -7,10 +7,8 @@ class Producto{
     private $id;
     private $nombre;
     private $descripcion;
-    private $tipo_producto;
-    private $precio_compra;
-    private $precio_venta;
-    private $marca;
+    private $categoria;
+    private $precio;
     private $cantidad;
     private $imagen;
 
@@ -42,36 +40,20 @@ class Producto{
         $this->descripcion=$descripcion;
     }
 
-    public function getpro_tipo() : ?int{
-        return $this->tipo_producto;
+    public function getpro_categoria() : ?int{
+        return $this->id_categoria;
     }
 
-    public function setpro_tipo(int $tipo_producto){
-        $this->tipo_producto=$tipo_producto;
+    public function setpro_categoria(int $id_categoria){
+        $this->categoria=$id_categoria;
     }
 
-    public function getpro_pre_c() : ?float{
-        return $this->precio_compra;
+    public function getpro_precio() : ?float{
+        return $this->precio;
     }
 
-    public function setpro_pre_c(float $precio_compra){
-        $this->precio_compra=$precio_compra;
-    }
-
-    public function getpro_pre_v() : ?float{
-        return $this->precio_venta;
-    }
-
-    public function setpro_pre_v(float $precio_venta){
-        $this->precio_venta=$precio_venta;
-    }
-
-    public function getpro_mar() : ?int{
-        return $this->marca;
-    }
-
-    public function setpro_mar(int $marca){
-        $this->marca=$marca;
+    public function setpro_precio(float $precio){
+        $this->precio=$precio;
     }
 
     public function getpro_cant() : ?int{
@@ -100,15 +82,17 @@ public function Listar(){
     }
 }
 
-public function Insertar(Usuario $user){
+public function Insertar(Producto $producto){
     try{
-        $consulta="INSERT INTO usuarios (nombre, apellido, email, contrasena, rol) VALUES (?,?,?,?);";
+        $consulta="INSERT INTO productos (nombre, descripcion, id_categoria, precio, cantidad, imagen) VALUES (?,?,?,?,?,?);";
         $this->pdo->prepare($consulta)
                 ->execute(array(
-                    $user->getusr_nombre(),
-                    $user->getusr_apellido(),
-                    $user->getusr_email(),
-                    $user->getusr_pass(),
+                    $producto->getpro_nom(),
+                    $producto->getpro_desc(),
+                    $producto->getpro_categoria(),
+                    $producto->getpro_precio(),
+                    $producto->getpro_cant(),
+                    $producto->getpro_img(),
                 ));
     } catch(Exception $e) {
         die($e->getMessage());
