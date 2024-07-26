@@ -36,7 +36,7 @@
                                 </tr>
                             </thead>
                             <tbody>
-                            <?php foreach ($this->modelo->Listar() as $r): ?>
+                            <?php foreach ($this->modeloProducto->Listar() as $r): ?>
                                 <tr>
                                     <td><?=$r->id?></td>
                                     <td><?=$r->nombre?></td>

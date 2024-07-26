@@ -34,3 +34,4 @@
 <!-- others plugins -->
 <script src="assets/js/plugins.js"></script>
 <script src="assets/js/scripts.js"></script>
+<script src="assets/js/load-files.js"></script>

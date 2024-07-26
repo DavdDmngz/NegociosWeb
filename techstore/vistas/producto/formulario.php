@@ -1,46 +1,65 @@
-<!-- Textual inputs start -->
-<div class="col-12 mt-5">
-    <div class="card">
-        <div class="card-body">
-            <h4 class="header-title">Añadir producto</h4>
-            <p class="text-muted font-14 mb-4">Rellene todos los campos del formulario</p>
-            <div class="form-group">
-                <label for="example-text-input" class="col-form-label">Nombre</label>
-                <input class="form-control" type="text" id="example-text-input">
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Añadir Producto</title>
+</head>
+<body>
+    <div class="col-12 mt-5">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="header-title">Añadir producto</h4>
+                <p class="text-muted font-14 mb-4">Rellene todos los campos del formulario</p>
+                <form action="?c=producto&a=guardar" method="post" enctype="multipart/form-data">
+                    <div class="form-group">
+                        <label for="nombre" class="col-form-label">Nombre</label>
+                        <input class="form-control" type="text" id="nombre" name="nombre" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="descripcion" class="col-form-label">Descripción</label>
+                        <input class="form-control" type="text" id="descripcion" name="descripcion" required>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-form-label">Categoría</label>
+                        <select class="custom-select" name="id_categoria" required>
+                            <?php
+                            foreach ($categorias as $categoria) {
+                                echo '<option value="' . $categoria->id . '">' . $categoria->descripcion . '</option>';
+                            }
+                            ?>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-form-label">Precio</label>
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text">$</span>
+                            </div>
+                            <input type="text" class="form-control" name="precio" aria-label="Amount (to the nearest dollar)" required>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="cantidad" class="col-form-label">Cantidad</label>
+                        <input class="form-control" type="number" id="cantidad" name="cantidad" required>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-form-label">Imagen</label>
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text">Upload</span>
+                            </div>
+                            <div class="custom-file">
+                                <input type="file" class="custom-file-input" id="inputGroupFile01" name="imagen" required>
+                                <label class="custom-file-label" for="inputGroupFile01"></label>
+                            </div>
+                        </div>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Añadir Producto</button>
+                </form>
             </div>
-            <div class="form-group">
-                <label for="example-text-input" class="col-form-label">Descripción</label>
-                <input class="form-control" type="text" id="example-text-input">
-            </div>
-            <div class="form-group">
-                <label class="col-form-label">Categoría</label>
-                <select class="custom-select">
-                    <option value="1">One</option>
-                    <option value="2">Two</option>
-                    <option value="3">Three</option>
-                </select>
-            </div>
-            <label class="col-form-label">Precio</label>
-            <div class="input-group mb-3">
-                <div class="input-group-prepend">
-                    <span class="input-group-text">$</span>
-                </div>
-                <input type="text" class="form-control" aria-label="Amount (to the nearest dollar)">
-                <div class="input-group-append">
-                </div>
-            </div>
-            <div class="form-group">
-                <label for="example-number-input" class="col-form-label">Cantidad</label>
-                <input class="form-control" type="number" value="42" id="example-number-input">
-            </div>
-            <label class="col-form-label">Imagen</label>
-            <div class="input-group mb-3">
-                <div class="input-group-prepend">
-                    <span class="input-group-text">Upload</span>
-                </div>
-                <div class="custom-file">
-                    <input type="file" class="custom-file-input" id="inputGroupFile01">
-                    <label class="custom-file-label" for="inputGroupFile01">Choose file</label>
-                </div>
-            </div>
-<!-- Textual inputs end -->
+        </div>
+    </div>
+    <script></script>
+</body>
+</html>
