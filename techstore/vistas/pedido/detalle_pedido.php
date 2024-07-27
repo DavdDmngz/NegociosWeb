@@ -8,6 +8,7 @@
     <thead>
         <tr>
             <th>Id</th>
+            <th>Pedido Id</th>
             <th>Producto Id</th>
             <th>Descripción Producto</th>
             <th>Nombre Producto</th>
@@ -21,6 +22,7 @@
         <?php foreach ($detalle as $item): ?>
         <tr>
             <td><?php echo $item->id; ?></td>
+            <td><?php echo $item->pedido_id; ?></td>
             <td><?php echo $item->producto_id; ?></td>
             <td><?php echo $item->producto_descripcion; ?></td>
             <td><?php echo $item->producto_nombre; ?></td>
