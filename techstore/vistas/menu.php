@@ -8,18 +8,26 @@
                                 <ul id="nav_menu">
                                     <li><a href="?c=inicio&a=inicio"><i class="ti-map-alt"></i> <span>Inicio</span></a></li>
                                     <li>
-                                        <a href="javascript:void(0)"><i class="ti-map-alt"></i><span>Inicio</span></a>
+                                        <a href="javascript:void(0)"><i class="ti-map-alt"></i><span>Productos</span></a>
                                         <ul class="submenu">
-                                            <li><a href="index.html">ICO dashboard</a></li>
-                                            <li><a href="index2.html">Ecommerce dashboard</a></li>
-                                            <li><a href="index3.html">SEO dashboard</a></li>
+                                            <li><a href="index2.html">Ver todo</a></li>
+                                            <li><a href="index.html">Categorías</a></li>
+                                            <li><a href="index3.html">Ofertas</a></li>
                                         </ul>
                                     </li>
-                                    <li><a href="maps.html"><i class="ti-desktop"></i> <span>Tienda</span></a></li>
                                     <li><a href="maps.html"><i class="ti-map-alt"></i> <span>maps</span></a></li>
                                     <li><a href="maps.html"><i class="ti-map-alt"></i> <span>maps</span></a></li>
                                     <li><a href="maps.html"><i class="ti-map-alt"></i> <span>maps</span></a></li>
                                     <li><a href="maps.html"><i class="ti-map-alt"></i> <span>maps</span></a></li>
+                                    <li>
+                                        <a href="javascript:void(0)"><i class="ti-user"></i><span>Mi perfil</span></a>
+                                        <ul class="submenu">
+                                            <li><a href="index2.html">Direcciones del Usuario</a></li>
+                                            <li><a href="index.html">Inicio de sesión y seguridad</a></li>
+                                            <li><a href="index3.html">Gestionar mis pedidos</a></li>
+                                            <li><a href="index3.html">Cerrar sesión</a></li>
+                                        </ul>
+                                    </li>
                                     <li><a href="maps.html"><i class="ti-map-alt"></i> <span>maps</span></a></li>
                                 </ul>
                             </nav>

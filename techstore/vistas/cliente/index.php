@@ -4,12 +4,12 @@
             <div class="card">
                 <div class="card-body">
                     <div>
-                        <h4 class="header-title">Productos</h4>
+                        <h4 class="header-title">Clientes</h4>
                     </div>
                     <div class="row">
                         <div class="col">
                             <div class="grid-col">
-                                Producto
+                                Cleintes registrados
                             </div>
                         </div>
                         <div class="col col-lg-2">
@@ -25,19 +25,21 @@
                                 <tr>
                                     <th>Id</th>
                                     <th>Nombre</th>
-                                    <th>email</th>
-                                    <th>fecha de creación</th>
-                                    <th>última modificación</th>
+                                    <th>Descripción</th>
+                                    <th>Categoria</th>
+                                    <th>Precio</th>
+                                    <th>Imagen</th>
                                 </tr>
                             </thead>
                             <tbody>
-                            <?php foreach ($this->modelo->Listar() as $r): ?>
+                            <?php foreach ($this->modeloProducto->Listar() as $r): ?>
                                 <tr>
                                     <td><?=$r->id?></td>
                                     <td><?=$r->nombre?></td>
-                                    <td><?=$r->email?></td>
-                                    <td><?=$r->created_at?></td>
-                                    <td><?=$r->updated_at?></td>
+                                    <td><?=$r->descripcion?></td>
+                                    <td><?=$r->id_categoria?></td>
+                                    <td><?=$r->precio?></td>
+                                    <td><?=$r->imagen?></td>
                                 </tr>
                             <?php endforeach; ?>
                             </tbody>

@@ -10,19 +10,10 @@ class UsuarioControlador {
         $this->modelo = new Usuario();
     }
 
-    public function Inicio() {     
+    public function Inicio() {      
         require_once "vistas/style.php";
-        if (Session::isLoggedIn()) {
-            if (Session::isAdmin()) {
-                require_once "vistas/sidebar.vertical.php";
-                require_once "vistas/admin/index.php"; // Vista para administrador
-            } else {
-                require_once "vistas/menu.php";
-                require_once "vistas/usuario/index.php"; // Vista para usuarios regulares
-            }
-        } else {
-            $this->Logout();
-        }
+        require_once "vistas/sidebar.vertical.php";
+        require_once "vistas/usuario/index.php";
         require_once "vistas/foother.php";
         require_once "vistas/scripts.php";
     }
@@ -39,10 +30,10 @@ class UsuarioControlador {
         require_once "vistas/scripts.php";
     }
 
+
     public function Crear() {
         $user = new Usuario();
         $user->setusr_nombre($_POST['nombre']);
-        $user->setusr_apellido($_POST['apellido']);
         $user->setusr_email($_POST['email']);
         $user->setusr_pass($_POST['contrasena']);
         $user->setusr_rol(3); // Asignar rol por defecto, cambiar según sea necesario

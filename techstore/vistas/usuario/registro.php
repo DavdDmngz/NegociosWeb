@@ -22,14 +22,8 @@
                         </div>
                     <?php endif; ?>
                     <div class="form-gp">
-                        <label for="nombre">Nombre</label>
+                        <label for="nombre">Tu nombre</label>
                         <input type="text" id="nombre" name="nombre" required>
-                        <i class="ti-user"></i>
-                        <div class="text-danger"></div>
-                    </div>
-                    <div class="form-gp">
-                        <label for="apellido">Apellido</label>
-                        <input type="text" id="apellido" name="apellido" required>
                         <i class="ti-user"></i>
                         <div class="text-danger"></div>
                     </div>

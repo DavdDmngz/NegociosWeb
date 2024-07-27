@@ -29,9 +29,9 @@ try {
 
     if ($filas) {
         if ($filas['id'] == 1) {
-            header("Location: vistas/usuario/admin.php");
+            header("Location: vistas/admin/index.php");
         } else if ($filas['id'] == 2) {
-            header("Location: vistas/usuario/index.php");
+            header("Location: vistas/inicio/index.php");
         }
     } else {
         include("index.php");
