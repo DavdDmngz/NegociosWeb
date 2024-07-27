@@ -4,12 +4,12 @@
             <div class="card">
                 <div class="card-body">
                     <div>
-                        <h4 class="header-title">Productos</h4>
+                        <h4 class="header-title">Clientes</h4>
                     </div>
                     <div class="row">
                         <div class="col">
                             <div class="grid-col">
-                                Producto
+                                Cleintes registrados
                             </div>
                         </div>
                         <div class="col col-lg-2">

@@ -25,21 +25,19 @@
                                 <tr>
                                     <th>Id</th>
                                     <th>Nombre</th>
-                                    <th>Descripción</th>
-                                    <th>Categoria</th>
-                                    <th>Precio</th>
-                                    <th>Imagen</th>
+                                    <th>email</th>
+                                    <th>fecha de creación</th>
+                                    <th>última modificación</th>
                                 </tr>
                             </thead>
                             <tbody>
-                            <?php foreach ($this->modeloProducto->Listar() as $r): ?>
+                            <?php foreach ($this->modelo->Listar() as $r): ?>
                                 <tr>
                                     <td><?=$r->id?></td>
                                     <td><?=$r->nombre?></td>
-                                    <td><?=$r->descripcion?></td>
-                                    <td><?=$r->id_categoria?></td>
-                                    <td><?=$r->precio?></td>
-                                    <td><?=$r->imagen?></td>
+                                    <td><?=$r->email?></td>
+                                    <td><?=$r->created_at?></td>
+                                    <td><?=$r->updated_at?></td>
                                 </tr>
                             <?php endforeach; ?>
                             </tbody>

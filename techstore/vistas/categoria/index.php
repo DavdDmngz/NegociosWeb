@@ -4,19 +4,19 @@
             <div class="card">
                 <div class="card-body">
                     <div>
-                        <h4 class="header-title">Productos</h4>
+                        <h4 class="header-title">Categorías</h4>
                     </div>
                     <div class="row">
                         <div class="col">
                             <div class="grid-col">
-                                Producto
+                                Categorías
                             </div>
                         </div>
                         <div class="col col-lg-2">
-                        <button type="button" class="btn btn-flat btn-danger btn-s" onclick="location.href='?c=producto&a=agregar'">Nuevo producto</button>
+                        <button type="button" class="btn btn-flat btn-danger btn-s" onclick="location.href='?c=categoria&a=agregar'">Nueva categoría</button>
                         </div>
                         <div class="col col-lg-2">
-                        <button type="button" class="btn btn-flat btn-danger btn-s" onclick="location.href='?c=producto&a=agregar'">Modificar inventario</button>
+                        <button type="button" class="btn btn-flat btn-danger btn-s" onclick="location.href='?c=categoria&a=agregar'">Nueva categoría</button>
                         </div>
                     </div>
                     <div class="data-tables">
@@ -24,22 +24,14 @@
                             <thead class="bg-light text-capitalize">
                                 <tr>
                                     <th>Id</th>
-                                    <th>Nombre</th>
                                     <th>Descripción</th>
-                                    <th>Categoria</th>
-                                    <th>Precio</th>
-                                    <th>Imagen</th>
                                 </tr>
                             </thead>
                             <tbody>
-                            <?php foreach ($this->modeloProducto->Listar() as $r): ?>
+                            <?php foreach ($this->modelo->Listar() as $r): ?>
                                 <tr>
                                     <td><?=$r->id?></td>
-                                    <td><?=$r->nombre?></td>
                                     <td><?=$r->descripcion?></td>
-                                    <td><?=$r->id_categoria?></td>
-                                    <td><?=$r->precio?></td>
-                                    <td><?=$r->imagen?></td>
                                 </tr>
                             <?php endforeach; ?>
                             </tbody>

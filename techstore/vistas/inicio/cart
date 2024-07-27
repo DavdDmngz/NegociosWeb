@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Carrito de Compras</title>
+    <style>
+        /* Estilos básicos para el carrito y artículos */
+        .cart {
+            position: fixed;
+            top: 10px;
+            right: 10px;
+            background-color: #f1f1f1;
+            padding: 20px;
+            border: 1px solid #ccc;
+            width: 200px;
+        }
+        .cart-item {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 10px;
+        }
+        .item {
+            border: 1px solid #ccc;
+            padding: 10px;
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+
+<h1>Tienda</h1>
+
+<div class="items">
+    <div class="item" data-id="1" data-name="Producto 1" data-price="10">
+        <h2>Producto 1</h2>
+        <p>Precio: $10</p>
+        <button class="add-to-cart">Agregar al Carrito</button>
+    </div>
+    <div class="item" data-id="2" data-name="Producto 2" data-price="20">
+        <h2>Producto 2</h2>
+        <p>Precio: $20</p>
+        <button class="add-to-cart">Agregar al Carrito</button>
+    </div>
+    <!-- Agrega más productos según sea necesario -->
+</div>
+
+<div class="cart">
+    <h2>Carrito de Compras</h2>
+    <div class="cart-items"></div>
+    <button class="empty-cart">Vaciar Carrito</button>
+</div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const cartItemsContainer = document.querySelector('.cart-items');
+
+        function getCartItems() {
+            const cart = document.cookie.split('; ').find(row => row.startsWith('cart='));
+            return cart ? JSON.parse(cart.split('=')[1]) : [];
+        }
+
+        function saveCartItems(items) {
+            document.cookie = 'cart=' + JSON.stringify(items) + ';path=/';
+        }
+
+        function renderCart() {
+            const items = getCartItems();
+            cartItemsContainer.innerHTML = '';
+
+            items.forEach(item => {
+                const div = document.createElement('div');
+                div.classList.add('cart-item');
+                div.innerHTML = `
+                    <span>${item.name} ($${item.price})</span>
+                    <button class="remove-from-cart" data-id="${item.id}">Eliminar</button>
+                `;
+                cartItemsContainer.appendChild(div);
+            });
+
+            const removeButtons = document.querySelectorAll('.remove-from-cart');
+            removeButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    const id = parseInt(this.getAttribute('data-id'));
+                    const newItems = getCartItems().filter(item => item.id !== id);
+                    saveCartItems(newItems);
+                    renderCart();
+                });
+            });
+        }
+
+        document.querySelectorAll('.add-to-cart').forEach(button => {
+            button.addEventListener('click', function() {
+                const item = this.parentElement;
+                const id = parseInt(item.getAttribute('data-id'));
+                const name = item.getAttribute('data-name');
+                const price = parseFloat(item.getAttribute('data-price'));
+
+                const cartItems = getCartItems();
+                cartItems.push({ id, name, price });
+                saveCartItems(cartItems);
+                renderCart();
+            });
+        });
+
+        document.querySelector('.empty-cart').addEventListener('click', function() {
+            saveCartItems([]);
+            renderCart();
+        });
+
+        renderCart();
+    });
+</script>
+
+</body>
+</html>
