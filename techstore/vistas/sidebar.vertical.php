@@ -37,9 +37,10 @@
                             <li class="collapsed">
                                 <a href="javascript:void(0)" aria-expanded="true"><i class="ti-truck"></i><span>Pedidos</span></a>
                                 <ul class="collapse">
-                                    <li><a href="#">Gestionar pedidos</a></li>
-                                    <li><a href="#">Detalles</a></li>
-                                </ul>
+                                    <li><a href="?c=pedido&a=inicio">Gestionar pedidos</a></li>
+                                    <li><a href="?c=detalle&a=verDetalles&id=123">Detalles</a></li>
+                                    </ul>
+                                </li>
                             </li>
                             <li class="active"><a href="?c=inicio&a=logout"><i class="ti-map-alt"></i><span>Cerrar sesion</span></a></li>
                         </ul>
