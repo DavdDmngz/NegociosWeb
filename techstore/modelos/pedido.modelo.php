@@ -1,68 +1,50 @@
 <?php
-
 class Pedido {
     private $pdo;
-
-    private $pedido_id;
-    private $producto;
-    private $cantidad;
-    private $precio;
-    private $total;
 
     public function __construct() {
         $this->pdo = BaseDatos::conectar();
     }
 
-    public function getPedido_id(): ?int {
-        return $this->pedido_id;
-    }
-
-    public function setPedido_id(int $id) {
-        $this->pedido_id = $id;
-    }
-
-    public function getProducto(): ?string {
-        return $this->producto;
-    }
-
-    public function setProducto(string $producto) {
-        $this->producto = $producto;
-    }
-
-    public function getCantidad(): ?int {
-        return $this->cantidad;
-    }
-
-    public function setCantidad(int $cantidad) {
-        $this->cantidad = $cantidad;
-    }
-
-    public function getPrecio(): ?float {
-        return $this->precio;
-    }
-
-    public function setPrecio(float $precio) {
-        $this->precio = $precio;
-    }
-
-    public function getTotal(): ?float {
-        return $this->total;
-    }
-
-    public function setTotal(float $total) {
-        $this->total = $total;
-    }
-
-    public function insertar(Pedido $pedido) {
+    public function agregarAlCarrito($producto, $cantidad, $precio) {
         try {
-            $consulta = "INSERT INTO pedidos (producto, cantidad, precio, total) VALUES (?, ?, ?, ?);";
+            $total = $cantidad * $precio;
+            $consulta = "INSERT INTO carrito (producto, cantidad, precio, total) VALUES (?, ?, ?, ?);";
             $this->pdo->prepare($consulta)
-                ->execute([
-                    $pedido->getProducto(),
-                    $pedido->getCantidad(),
-                    $pedido->getPrecio(),
-                    $pedido->getTotal()
-                ]);
+                ->execute([$producto, $cantidad, $precio, $total]);
+        } catch (Exception $e) {
+            die($e->getMessage());
+        }
+    }
+
+    public function listarCarrito() {
+        try {
+            $consulta = $this->pdo->prepare("SELECT * FROM carrito");
+            $consulta->execute();
+            return $consulta->fetchAll(PDO::FETCH_OBJ);
+        } catch (Exception $e) {
+            die($e->getMessage());
+        }
+    }
+
+    public function vaciarCarrito() {
+        try {
+            $consulta = $this->pdo->prepare("DELETE FROM carrito");
+            $consulta->execute();
+        } catch (Exception $e) {
+            die($e->getMessage());
+        }
+    }
+
+    public function insertarPedidoDesdeCarrito() {
+        try {
+            $items = $this->listarCarrito();
+            foreach ($items as $item) {
+                $consulta = "INSERT INTO pedidos (producto, cantidad, precio, total) VALUES (?, ?, ?, ?);";
+                $this->pdo->prepare($consulta)
+                    ->execute([$item->producto, $item->cantidad, $item->precio, $item->total]);
+            }
+            $this->vaciarCarrito();
         } catch (Exception $e) {
             die($e->getMessage());
         }
