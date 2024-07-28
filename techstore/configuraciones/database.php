@@ -3,7 +3,7 @@ class BaseDatos {
     private static $host = 'localhost';
     private static $db = 'techstore';
     private static $usuario = 'root';
-    private static $contrasena = '0955';
+    private static $contrasena = 'kacl1997';
     private static $caracteres = 'utf8';
 
     public static function conectar(){

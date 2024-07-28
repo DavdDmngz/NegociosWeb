@@ -74,7 +74,7 @@ class Producto {
 
     public function Listar() {
         try {
-            $consulta = $this->pdo->prepare("SELECT * FROM productos");
+            $consulta = $this->pdo->prepare("SELECT * FROM producto");
             $consulta->execute();
             return $consulta->fetchAll(PDO::FETCH_OBJ);
         } catch(Exception $e) {
@@ -84,7 +84,7 @@ class Producto {
 
     public function Insertar(Producto $producto) {
         try {
-            $consulta = "INSERT INTO productos (nombre, descripcion, id_categoria, precio, imagen) VALUES (?, ?, ?, ?, ?);";
+            $consulta = "INSERT INTO producto (nombre, descripcion, id_categoria, precio, imagen) VALUES (?, ?, ?, ?, ?);";
             $this->pdo->prepare($consulta)
                 ->execute([
                     $producto->getpro_nom(),
@@ -100,7 +100,7 @@ class Producto {
 
     public function actualizar(Producto $producto) {
         try {
-            $consulta = "UPDATE productos SET 
+            $consulta = "UPDATE producto SET 
                 nombre = ?, descripcion = ?, id_categoria = ?, precio = ?, cantidad = ?, imagen = ?
                 WHERE id = ?;";
             $this->pdo->prepare($consulta)
@@ -120,7 +120,7 @@ class Producto {
 
     public function eliminar($id) {
         try {
-            $consulta = $this->pdo->prepare("DELETE FROM productos WHERE id = ?");
+            $consulta = $this->pdo->prepare("DELETE FROM producto WHERE id = ?");
             $consulta->execute([$id]);
         } catch (Exception $e) {
             die($e->getMessage());
@@ -164,7 +164,7 @@ class Producto {
 
     public function ProductoExiste($nombre) {
         try {
-            $consulta = $this->pdo->prepare("SELECT COUNT(*) FROM productos WHERE nombre = ?");
+            $consulta = $this->pdo->prepare("SELECT COUNT(*) FROM producto WHERE nombre = ?");
             $consulta->execute([$nombre]);
             $count = $consulta->fetchColumn();
             return $count > 0;
