@@ -84,16 +84,15 @@ class Producto {
 
     public function Insertar(Producto $producto) {
         try {
-            $consulta = "INSERT INTO productos (nombre, descripcion, id_categoria, precio, cantidad, imagen) VALUES (?,?,?,?,?,?);";
+            $consulta = "INSERT INTO productos (nombre, descripcion, id_categoria, precio, imagen) VALUES (?, ?, ?, ?, ?);";
             $this->pdo->prepare($consulta)
-                ->execute(array(
+                ->execute([
                     $producto->getpro_nom(),
                     $producto->getpro_desc(),
                     $producto->getpro_categoria(),
                     $producto->getpro_precio(),
-                    $producto->getpro_cant(),
-                    $producto->getpro_imagen() // Añadido
-                ));
+                    $producto->getpro_imagen()
+                ]);
         } catch(Exception $e) {
             die($e->getMessage());
         }
@@ -158,6 +157,17 @@ class Producto {
             $consulta->execute([$producto_id]);
             $resultado = $consulta->fetch(PDO::FETCH_OBJ);
             return $resultado ? $resultado->cantidad : 0;
+        } catch (Exception $e) {
+            die($e->getMessage());
+        }
+    }
+
+    public function ProductoExiste($nombre) {
+        try {
+            $consulta = $this->pdo->prepare("SELECT COUNT(*) FROM productos WHERE nombre = ?");
+            $consulta->execute([$nombre]);
+            $count = $consulta->fetchColumn();
+            return $count > 0;
         } catch (Exception $e) {
             die($e->getMessage());
         }

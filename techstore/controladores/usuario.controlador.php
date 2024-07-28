@@ -17,11 +17,14 @@ class UsuarioControlador {
                 require_once "vistas/sidebar.vertical.php";
                 require_once "vistas/admin/index.php"; // Vista para administrador
             } else {
+                require_once "vistas/header.session.php";
                 require_once "vistas/menu.php";
-                require_once "vistas/usuario/index.php"; // Vista para usuarios regulares
+                require_once "vistas/inicio/principal.php"; // Vista para usuarios regulares
             }
         } else {
-            $this->Logout();
+            require_once "vistas/header.php";
+            require_once "vistas/menu.php";
+            require_once "vistas/inicio/principal.php"; // Vista para usuarios regulares
         }
         require_once "vistas/foother.php";
         require_once "vistas/scripts.php";
@@ -65,9 +68,14 @@ class UsuarioControlador {
         if ($user) {
             Session::set('user_id', $user->id);
             Session::set('rol', $user->rol);
-            header("location:?c=usuario&a=inicio");
+            // Redirige según el rol
+            if ($user->rol == 1) { // Ejemplo para administrador
+                header("location:?c=usuario&a=inicio");
+            } else {
+                header("location:?c=inicio&a=home");
+            }
         } else {
-            header("location:?c=usuario&a=login&error=1");
+            header("location:?c=inicio&a=login&error=1");
         }
     }
 

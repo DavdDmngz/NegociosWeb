@@ -11,6 +11,11 @@
             <div class="card-body">
                 <h4 class="header-title">Añadir producto</h4>
                 <p class="text-muted font-14 mb-4">Rellene todos los campos del formulario</p>
+                <?php if (isset($_GET['error']) && $_GET['error'] == 'product_exists'): ?>
+                        <div class="alert alert-danger">
+                            Éste producto ya existe.
+                        </div>
+                    <?php endif; ?>
                 <form action="?c=producto&a=guardar" method="post" enctype="multipart/form-data">
                     <div class="form-group">
                         <label for="nombre" class="col-form-label">Nombre</label>
@@ -38,10 +43,6 @@
                             </div>
                             <input type="text" class="form-control" name="precio" aria-label="Amount (to the nearest dollar)" required>
                         </div>
-                    </div>
-                    <div class="form-group">
-                        <label for="cantidad" class="col-form-label">Cantidad</label>
-                        <input class="form-control" type="number" id="cantidad" name="cantidad" required>
                     </div>
                     <div class="form-group">
                         <label class="col-form-label">Imagen</label>

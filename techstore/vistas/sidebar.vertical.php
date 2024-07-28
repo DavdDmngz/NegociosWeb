@@ -17,15 +17,14 @@
                                 <ul class="collapse">
                                     <li><a href="?c=producto&a=inicio">Productos</a></li>
                                     <li><a href="?c=producto&a=agregar">Añadir producto</a></li>
-                                    <li><a href="#">Categorías</a></li>
-                                    <li><a href="?c=categoria&a=inicio">Agregar Categoría</a></li>
+                                    <li><a href="?c=categoria&a=inicio">Categorías</a></li>
+                                    <li><a href="?c=categoria&a=agregar">Agregar Categoría</a></li>
                                 </ul>
                             </li>
                             <li class="collapsed">
                                 <a href="javascript:void(0)" aria-expanded="true"><i class="ti-user"></i><span>Clientes</span></a>
                                 <ul class="collapse">
-                                    <li><a href="#">Clientes</a></li>
-                                    <li><a href="#">Agregar cliente</a></li>
+                                    <li><a href="?c=usuario&a=inicio">Clientes</a></li>
                                 </ul>
                             </li>
                             <li class="collapsed">
@@ -42,6 +41,7 @@
                                     <li><a href="#">Detalles</a></li>
                                 </ul>
                             </li>
+                            <li class="active"><a href="?c=inicio&a=logout"><i class="ti-map-alt"></i><span>Cerrar sesion</span></a></li>
                         </ul>
                     </nav>
                 </div>

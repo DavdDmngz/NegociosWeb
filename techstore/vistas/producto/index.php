@@ -12,14 +12,11 @@
                                 Producto
                             </div>
                         </div>
-                        <div class="col-md-auto">
-                            <div class="grid-col">
-                                Productos
-                            </div>
-                        </div>
                         <div class="col col-lg-2">
                         <button type="button" class="btn btn-flat btn-danger btn-s" onclick="location.href='?c=producto&a=agregar'">Nuevo producto</button>
-
+                        </div>
+                        <div class="col col-lg-2">
+                        <button type="button" class="btn btn-flat btn-danger btn-s" onclick="location.href='?c=producto&a=agregar'">Modificar inventario</button>
                         </div>
                     </div>
                     <div class="data-tables">
@@ -31,7 +28,6 @@
                                     <th>Descripción</th>
                                     <th>Categoria</th>
                                     <th>Precio</th>
-                                    <th>Stock</th>
                                     <th>Imagen</th>
                                 </tr>
                             </thead>
@@ -43,7 +39,6 @@
                                     <td><?=$r->descripcion?></td>
                                     <td><?=$r->id_categoria?></td>
                                     <td><?=$r->precio?></td>
-                                    <td><?=$r->cantidad?></td>
                                     <td><?=$r->imagen?></td>
                                 </tr>
                             <?php endforeach; ?>

@@ -30,48 +30,38 @@ class ProductoControlador {
     }
 
     public function Guardar() {
+        $nombre = $_POST['nombre'];
+        $descripcion = $_POST['descripcion'];
+        $id_categoria = $_POST['id_categoria'];
+        $precio = $_POST['precio'];
+
+        // Crear el objeto Producto
         $producto = new Producto();
-        
-        $producto->setpro_nom($_POST['nombre']);
-        $producto->setpro_desc($_POST['descripcion']);
-        $producto->setpro_categoria($_POST['id_categoria']);
-        $producto->setpro_precio($_POST['precio']);
-        $producto->setpro_cant($_POST['cantidad']);
+        $producto->setpro_nom($nombre);
+        $producto->setpro_desc($descripcion);
+        $producto->setpro_categoria($id_categoria);
+        $producto->setpro_precio($precio);
 
         // Manejo del archivo subido
         if (isset($_FILES['imagen']) && $_FILES['imagen']['error'] === UPLOAD_ERR_OK) {
-            $targetDirectory = 'uploads/';
+            $targetDirectory = 'public/img/';
             $targetFile = $targetDirectory . basename($_FILES['imagen']['name']);
             if (move_uploaded_file($_FILES['imagen']['tmp_name'], $targetFile)) {
-                $producto->setpro_imagen($targetFile);
+                $producto->setpro_imagen('img/' . basename($_FILES['imagen']['name']));
             }
         }
 
-        $this->modeloProducto->Insertar($producto); // Asegúrate de llamar al método Insertar
-        header('Location:?c=producto&a=inicio');
-    }
-
-    public function Crear() {
-        $producto = new Producto();
-        
-        $producto->setpro_nom($_POST['nombre']);
-        $producto->setpro_desc($_POST['descripcion']);
-        $producto->setpro_categoria($_POST['id_categoria']);
-        $producto->setpro_precio($_POST['precio']);
-        $producto->setpro_cant($_POST['cantidad']);
-
-        // Manejo del archivo subido
-        if (isset($_FILES['imagen']) && $_FILES['imagen']['error'] === UPLOAD_ERR_OK) {
-            $targetDirectory = 'uploads/';
-            $targetFile = $targetDirectory . basename($_FILES['imagen']['name']);
-            if (move_uploaded_file($_FILES['imagen']['tmp_name'], $targetFile)) {
-                $producto->setpro_imagen($targetFile);
-            }
+        // Verificar si el producto ya existe
+        if ($this->modeloProducto->ProductoExiste($nombre)) {
+            // Redirigir con un mensaje de error
+            header("Location:?c=producto&a=agregar&error=product_exists");
+            exit();
+        }else {
+            $this->modeloProducto->Insertar($producto);
+            header("Location:?c=producto&a=inicio");
         }
 
-        $this->modeloProducto->Insertar($producto);
-        header("location:?c=producto&a=inicio");
-    }
+    } 
 
     public function actualizar() {
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
