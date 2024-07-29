@@ -11,7 +11,7 @@
 <div class="login-area login-s2">
     <div class="container">
         <div class="login-box ptb--100">
-            <form method="POST" action="?c=inicio&a=trylogin">
+            <form method="POST" action="?c=usuario&a=trylogin">
                 <div class="login-form-head">
                     <h4>Iniciar sesión</h4>
                     <p>Accede a tu cuenta para desbloquear opciones adicionales.</p>

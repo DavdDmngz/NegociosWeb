@@ -12,8 +12,7 @@ class ProductoControlador {
         $this->modeloCategoria = new Categoria();
     }
 
-    public function Inicio() {     
-        $productos = $this->modeloProducto->Listar();
+    public function Inicio() {      
         require_once "vistas/style.php";
         require_once "vistas/sidebar.vertical.php";
         require_once "vistas/producto/index.php";
@@ -62,7 +61,7 @@ class ProductoControlador {
             header("Location:?c=producto&a=inicio");
         }
 
-    }    
+    } 
 
     public function actualizar() {
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
@@ -71,31 +70,27 @@ class ProductoControlador {
             $descripcion = $_POST['descripcion'];
             $id_categoria = $_POST['id_categoria'];
             $precio = $_POST['precio'];
-
+            $cantidad = $_POST['cantidad'];
+            
             $producto = new Producto();
             $producto->setpro_id($id);
             $producto->setpro_nom($nombre);
             $producto->setpro_desc($descripcion);
             $producto->setpro_categoria($id_categoria);
             $producto->setpro_precio($precio);
+            $producto->setpro_cant($cantidad);
 
             // Manejo del archivo subido
             if (isset($_FILES['imagen']) && $_FILES['imagen']['error'] === UPLOAD_ERR_OK) {
-                $targetDirectory = 'public/img/';
-                
-                // Verificar si la carpeta existe, si no, crearla
-                if (!is_dir($targetDirectory)) {
-                    mkdir($targetDirectory, 0755, true);
-                }
-
+                $targetDirectory = 'uploads/';
                 $targetFile = $targetDirectory . basename($_FILES['imagen']['name']);
                 if (move_uploaded_file($_FILES['imagen']['tmp_name'], $targetFile)) {
-                    $producto->setpro_imagen('img/' . basename($_FILES['imagen']['name']));
+                    $producto->setpro_imagen($targetFile);
                 }
             }
 
             $this->modeloProducto->actualizar($producto);
-            header("Location:?c=producto&a=inicio");
+            header("location:?c=producto&a=inicio");
         }
     }
 
@@ -103,7 +98,7 @@ class ProductoControlador {
         if ($_SERVER['REQUEST_METHOD'] == 'GET') {
             $id = $_GET['id'];
             $this->modeloProducto->eliminar($id);
-            header("Location:?c=producto&a=inicio");
+            header("location:?c=producto&a=inicio");
         }
     }
 }

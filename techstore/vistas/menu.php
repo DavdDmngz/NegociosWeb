@@ -11,24 +11,31 @@
                                         <a href="javascript:void(0)"><i class="ti-map-alt"></i><span>Productos</span></a>
                                         <ul class="submenu">
                                             <li><a href="index2.html">Ver todo</a></li>
-                                            <li><a href="index.html">Categorías</a></li>
+                                            <li><a href="index.html">Por categorías</a></li>
                                             <li><a href="index3.html">Ofertas</a></li>
+                                            
                                         </ul>
                                     </li>
-                                    <li><a href="maps.html"><i class="ti-map-alt"></i> <span>maps</span></a></li>
-                                    <li><a href="maps.html"><i class="ti-map-alt"></i> <span>maps</span></a></li>
-                                    <li><a href="maps.html"><i class="ti-map-alt"></i> <span>maps</span></a></li>
-                                    <li><a href="maps.html"><i class="ti-map-alt"></i> <span>maps</span></a></li>
                                     <li>
                                         <a href="javascript:void(0)"><i class="ti-user"></i><span>Mi perfil</span></a>
                                         <ul class="submenu">
                                             <li><a href="index2.html">Direcciones del Usuario</a></li>
                                             <li><a href="index.html">Inicio de sesión y seguridad</a></li>
                                             <li><a href="index3.html">Gestionar mis pedidos</a></li>
+                                            <li><a href="index3.html">Favoritos</a></li>
                                             <li><a href="index3.html">Cerrar sesión</a></li>
                                         </ul>
                                     </li>
-                                    <li><a href="maps.html"><i class="ti-map-alt"></i> <span>maps</span></a></li>
+                                    <li><a href="maps.html"><i class="ti-map-alt"></i> <span>Tiendas</span></a></li>
+                                    <li><a href="maps.html"><i class="ti-shopping-cart"></i> <span>Carrito</span></a></li>
+                                    <li>
+                                        <a href="javascript:void(0)"><i class="ti-user"></i><span>Soporte</span></a>
+                                        <ul class="submenu">
+                                            <li><a href="index2.html">Devoluciones</a></li>
+                                            <li><a href="index.html">Soporte técnico</a></li>
+                                            <li><a href="index3.html">Preguntas Frecuentes</a></li>
+                                        </ul>
+                                    </li>
                                 </ul>
                             </nav>
                         </div>
