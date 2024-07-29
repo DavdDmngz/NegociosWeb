@@ -1,10 +1,11 @@
 <?php
 
-class Usuario {
+class Empleado {
     private $pdo;
 
     private $user_id;
     private $nombre;
+    private $apellido;
     private $email;
     private $contrasena;
     private $rol;
@@ -27,6 +28,14 @@ class Usuario {
 
     public function setusr_nombre(string $nombre) {
         $this->nombre = $nombre;
+    }
+
+    public function getusr_apellido() : ?string {
+        return $this->apellido;
+    }
+
+    public function setusr_apellido(string $apellido) {
+        $this->apellido = $apellido;
     }
 
     public function getusr_email() : ?string {
@@ -65,17 +74,7 @@ class Usuario {
 
     public function Listar() {
         try {
-            $consulta = $this->pdo->prepare("SELECT * FROM usuarios WHERE rol='3'");
-            $consulta->execute();
-            return $consulta->fetchAll(PDO::FETCH_OBJ);
-        } catch(Exception $e) {
-            die($e->getMessage());
-        }
-    }
-
-    public function ListarCliente() {
-        try {
-            $consulta = $this->pdo->prepare("SELECT * FROM usuarios WHERE rol='3'");
+            $consulta = $this->pdo->prepare("SELECT * FROM usuarios WHERE rol='2'");
             $consulta->execute();
             return $consulta->fetchAll(PDO::FETCH_OBJ);
         } catch(Exception $e) {
@@ -85,30 +84,15 @@ class Usuario {
 
     public function Insertar(Usuario $user) {
         try {
-            $consulta = "INSERT INTO usuarios (nombre, email, contrasena, rol) VALUES (?,?,?,?);";
+            $consulta = "INSERT INTO usuarios (nombre, apellido, email, contrasena, rol) VALUES (?,?,?,?,?);";
             $this->pdo->prepare($consulta)
                 ->execute(array(
                     $user->getusr_nombre(),
+                    $user->getusr_apellido(),
                     $user->getusr_email(),
                     password_hash($user->getusr_pass(), PASSWORD_BCRYPT),
                     $user->getusr_rol()
                 ));
-        } catch(Exception $e) {
-            die($e->getMessage());
-        }
-    }
-
-    public function Login($email, $contrasena) {
-        try {
-            $consulta = $this->pdo->prepare("SELECT * FROM usuarios WHERE email = ?");
-            $consulta->execute(array($email));
-            $user = $consulta->fetch(PDO::FETCH_OBJ);
-    
-            if ($user && password_verify($contrasena, $user->contrasena)) {
-                return $user;
-            } else {
-                return null;
-            }
         } catch(Exception $e) {
             die($e->getMessage());
         }
@@ -123,7 +107,5 @@ class Usuario {
             die($e->getMessage());
         }
     }
-    
-    
 }
 ?>

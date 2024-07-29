@@ -110,7 +110,7 @@ class Producto {
 
     public function eliminar($id) {
         try {
-            $consulta = $this->pdo->prepare("DELETE FROM producto WHERE id = ?");
+            $consulta = $this->pdo->prepare("DELETE FROM productos WHERE id = ?");
             $consulta->execute([$id]);
         } catch (Exception $e) {
             die($e->getMessage());
@@ -119,7 +119,7 @@ class Producto {
 
     public function ProductoExiste($nombre) {
         try {
-            $consulta = $this->pdo->prepare("SELECT COUNT(*) FROM producto WHERE nombre = ?");
+            $consulta = $this->pdo->prepare("SELECT COUNT(*) FROM productos WHERE nombre = ?");
             $consulta->execute([$nombre]);
             $count = $consulta->fetchColumn();
             return $count > 0;
