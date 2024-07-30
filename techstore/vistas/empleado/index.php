@@ -4,19 +4,24 @@
             <div class="card">
                 <div class="card-body">
                     <div>
-                        <h4 class="header-title">Clientes</h4>
+                        <h4 class="header-title">Usuarios</h4>
                     </div>
+                    <?php if (isset($_GET['error']) && $_GET['error'] == 'no_access'): ?>
+                        <div class="alert alert-danger">
+                            No posees los permisos para realizar esta acción.
+                        </div>
+                    <?php endif; ?>
                     <div class="row">
                         <div class="col">
                             <div class="grid-col">
-                                Cleintes registrados
+                                Empleados
                             </div>
                         </div>
                         <div class="col col-lg-2">
-                        <button type="button" class="btn btn-flat btn-danger btn-s" onclick="location.href='?c=producto&a=agregar'">Nuevo producto</button>
+                        <button type="button" class="btn btn-flat btn-danger btn-s" onclick="location.href='?c=empleado&a=agregar'">Nuevo Empleado</button>
                         </div>
                         <div class="col col-lg-2">
-                        <button type="button" class="btn btn-flat btn-danger btn-s" onclick="location.href='?c=producto&a=agregar'">Modificar inventario</button>
+                        <button type="button" class="btn btn-flat btn-danger btn-s" onclick="location.href='?c=categoria&a=agregar'">Nueva categoría</button>
                         </div>
                     </div>
                     <div class="data-tables">
@@ -25,21 +30,19 @@
                                 <tr>
                                     <th>Id</th>
                                     <th>Nombre</th>
-                                    <th>Descripción</th>
-                                    <th>Categoria</th>
-                                    <th>Precio</th>
-                                    <th>Imagen</th>
+                                    <th>Email</th>
+                                    <th>Fecha de creación</th>
+                                    <th>Última actualización</th>
                                 </tr>
                             </thead>
                             <tbody>
-                            <?php foreach ($this->modeloProducto->Listar() as $r): ?>
+                            <?php foreach ($this->modelo->Listar() as $r): ?>
                                 <tr>
                                     <td><?=$r->id?></td>
                                     <td><?=$r->nombre?></td>
-                                    <td><?=$r->descripcion?></td>
-                                    <td><?=$r->id_categoria?></td>
-                                    <td><?=$r->precio?></td>
-                                    <td><?=$r->imagen?></td>
+                                    <td><?=$r->email?></td>
+                                    <td><?=$r->created_at?></td>
+                                    <td><?=$r->updated_at?></td>
                                 </tr>
                             <?php endforeach; ?>
                             </tbody>
