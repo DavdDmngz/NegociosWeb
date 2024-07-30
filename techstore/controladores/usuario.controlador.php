@@ -63,7 +63,7 @@ class UsuarioControlador {
 
     public function Logout() {
         Session::destroy();
-        header("location:?c=inicio&a=home");
+        header("location:?c=inicio&a=inicio");
     }
 
     public function Nuevousuario() {

@@ -74,10 +74,12 @@ class Producto {
 
     public function Listar() {
         try {
-            $consulta = $this->pdo->prepare("SELECT * FROM producto");
-            $consulta->execute();
-            return $consulta->fetchAll(PDO::FETCH_OBJ); // Debería devolver un array de objetos
-        } catch(Exception $e) {
+            $result = array();
+            $stm = $this->pdo->prepare("SELECT * FROM producto");
+            $stm->execute();
+
+            return $stm->fetchAll(PDO::FETCH_OBJ);
+        } catch (Exception $e) {
             die($e->getMessage());
         }
     }
@@ -169,6 +171,39 @@ class Producto {
             $count = $consulta->fetchColumn();
             return $count > 0;
         } catch (Exception $e) {
+            die($e->getMessage());
+        }
+    }
+
+    public function RegistrarMovimiento($producto_id, $cantidad, $tipo, $observaciones) {
+        try {
+            $this->pdo->beginTransaction();
+
+            // Insertar el movimiento en la tabla movimientos
+            $stm = $this->pdo->prepare("INSERT INTO movimientos (producto_id, cantidad, tipo, observaciones) VALUES (?, ?, ?, ?)");
+            $stm->execute(array($producto_id, $cantidad, $tipo, $observaciones));
+
+            // Calcular la cantidad a actualizar en el inventario
+            $cantidadMovimiento = $tipo === 'entrada' ? $cantidad : -$cantidad;
+
+            // Comprobar si el producto ya existe en el inventario
+            $stm = $this->pdo->prepare("SELECT cantidad FROM inventario WHERE producto_id = ?");
+            $stm->execute(array($producto_id));
+            $inventario = $stm->fetch(PDO::FETCH_OBJ);
+
+            if ($inventario) {
+                // Si existe, actualizar la cantidad
+                $stm = $this->pdo->prepare("UPDATE inventario SET cantidad = cantidad + ? WHERE producto_id = ?");
+                $stm->execute(array($cantidadMovimiento, $producto_id));
+            } else {
+                // Si no existe, insertar un nuevo registro en el inventario
+                $stm = $this->pdo->prepare("INSERT INTO inventario (producto_id, cantidad) VALUES (?, ?)");
+                $stm->execute(array($producto_id, $cantidadMovimiento));
+            }
+
+            $this->pdo->commit();
+        } catch (Exception $e) {
+            $this->pdo->rollBack();
             die($e->getMessage());
         }
     }

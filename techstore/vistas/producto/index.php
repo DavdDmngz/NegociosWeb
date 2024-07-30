@@ -16,7 +16,7 @@
                         <button type="button" class="btn btn-flat btn-danger btn-s" onclick="location.href='?c=producto&a=agregar'">Nuevo producto</button>
                         </div>
                         <div class="col col-lg-2">
-                        <button type="button" class="btn btn-flat btn-danger btn-s" onclick="location.href='?c=producto&a=agregar'">Modificar inventario</button>
+                        <button type="button" class="btn btn-flat btn-danger btn-s" onclick="location.href='?c=producto&a=movimiento'">Modificar inventario</button>
                         </div>
                     </div>
                     <div class="data-tables">
