@@ -10,7 +10,7 @@
                                     <li>
                                         <a href="javascript:void(0)"><i class="ti-map-alt"></i><span>Productos</span></a>
                                         <ul class="submenu">
-                                            <li><a href="index2.html">Ver todo</a></li>
+                                            <li><a href="?c=producto&a=catalogo">Ver todo</a></li>
                                             <li><a href="index.html">Por categorías</a></li>
                                             <li><a href="index3.html">Ofertas</a></li>
                                             

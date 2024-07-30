@@ -29,6 +29,15 @@ class ProductoControlador {
         require_once "vistas/scripts.php";
     }
 
+    public function Catalogo() {
+        $categorias = $this->modeloCategoria->Listar(); // Obtener las categorías
+        require_once "vistas/style.php";
+        require_once "vistas/menu.php";
+        require_once "vistas/producto/catalogo.php";
+        require_once "vistas/foother.php";
+        require_once "vistas/scripts.php";
+    }
+
     public function Guardar() {
         $nombre = $_POST['nombre'];
         $descripcion = $_POST['descripcion'];

@@ -35,7 +35,7 @@
                                 </ul>
                             </li>
                             <li class="collapsed"><a href="?c=pedido&a=inicio"><i class="ti-truck"></i><span>Pedidos</span></a></li>
-                            <li class="active"><a href="?c=inicio&a=logout"><i class="ti-map-alt"></i><span>Cerrar sesion</span></a></li>
+                            <li class="active"><a href="?c=usuario&a=logout"><i class="ti-map-alt"></i><span>Cerrar sesion</span></a></li>
                         </ul>
                     </nav>
                 </div>

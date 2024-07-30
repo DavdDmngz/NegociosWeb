@@ -10,7 +10,15 @@
                         <h5 class="title"><?=$r->nombre?></h5>
                         <p class="card-text"><?=$r->descripcion?></p>
                         <p class="card-price">$<?=$r->precio?></p>
-                        <a href="#" class="btn btn-primary">Comprar</a>
+                        <a href="#" class="btn btn-primary" 
+                            data-id="<?=$r->id?>" 
+                            data-nombre="<?=$r->nombre?>" 
+                            data-descripcion="<?=$r->descripcion?>" 
+                            data-precio="<?=$r->precio?>" 
+                            data-categoria="<?=$r->id_categoria?>" 
+                            data-imagen="<?=$r->imagen?>" 
+                            data-cantidad="1" 
+                            onclick="agregarAlCarrito(event)">Comprar</a>
                     </div>
                 </div>
             </div>
@@ -18,3 +26,7 @@
         </div>
     </div>
 </div>
+
+<script>
+        
+</script>

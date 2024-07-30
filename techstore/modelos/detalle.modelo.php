@@ -1,31 +1,12 @@
 <?php
 
-class Detalle {
-    private $pdo;
+require_once 'modelos/basemodel.php';
 
-    public function __construct() {
-        $this->pdo = BaseDatos::conectar();
-    }
-
-    public function obtenerPorId($id) {
-        try {
-            if (!is_numeric($id)) {
-                throw new Exception("ID inválido.");
-            }
-
-            $consulta = $this->pdo->prepare("
-                SELECT d.id, d.pedido_id, d.producto_id, p.nombre AS producto_nombre, p.precio AS producto_precio, p.categoria, p.imagen, d.cantidad, (d.cantidad * p.precio) AS total
-                FROM detalle_pedido d
-                JOIN productos p ON d.producto_id = p.id
-                WHERE d.pedido_id = :id
-            ");
-            $consulta->bindParam(':id', $id, PDO::PARAM_INT);
-            $consulta->execute();
-
-            return $consulta->fetchAll(PDO::FETCH_OBJ);
-        } catch (Exception $e) {
-            die($e->getMessage());
-        }
+class DetallePedido extends BaseModel {
+    public function CrearDetallePedido($pedidoId, $productoId, $nombre, $descripcion, $precio, $categoria, $imagen, $cantidad) {
+        $sql = "INSERT INTO detalle_pedido (pedido_id, producto_id, nombre_producto, descripcion_producto, precio_producto, categoria, imagen, cantidad) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
+        $stmt = $this->db->prepare($sql);
+        $stmt->execute([$pedidoId, $productoId, $nombre, $descripcion, $precio, $categoria, $imagen, $cantidad]);
     }
 }
 ?>
