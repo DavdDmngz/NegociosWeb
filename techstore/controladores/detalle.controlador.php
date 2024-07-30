@@ -6,7 +6,7 @@ class DetalleControlador {
     private $modeloDetalle;
     private $modeloPedido;
 
-    public function __CONSTRUCT() {
+    public function __construct() {
         $this->modeloDetalle = new Detalle();
         $this->modeloPedido = new Pedido(); // Inicializa el modelo de pedidos
     }
@@ -17,20 +17,21 @@ class DetalleControlador {
             return;
         }
 
-        $detalle = $this->modeloDetalle->obtenerPorId($id);
+        // Obtener detalles del pedido
+        $detalle = $this->modeloDetalle->obtenerPorPedidoId($id);
 
         if ($detalle) {
             require_once "vistas/header.php";
             require_once "vistas/menu.php";
             require_once "vistas/style.php";
-            require_once "vistas/detalle/ver_detalles.php";
+            require_once "vistas/detalle/ver_detalles.php"; // Asegúrate de que este archivo existe y está bien configurado
             require_once "vistas/scripts.php";
         } else {
             echo "Detalle no encontrado.";
         }
     }
 
-    // Método para manejar la vista de pedidos si es necesario
+    // Método para manejar la vista de pedidos
     public function verPedidos() {
         $pedidos = $this->modeloPedido->listar();
 

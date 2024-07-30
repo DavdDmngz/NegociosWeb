@@ -110,7 +110,7 @@ class Producto {
                     $producto->getpro_categoria(),
                     $producto->getpro_precio(),
                     $producto->getpro_cant(),
-                    $producto->getpro_imagen(),
+                    $producto->getpro_imagen(), // Añadido
                     $producto->getpro_id()
                 ]);
         } catch (Exception $e) {
@@ -120,7 +120,7 @@ class Producto {
 
     public function eliminar($id) {
         try {
-            $consulta = $this->pdo->prepare("DELETE FROM producto WHERE id = ?");
+            $consulta = $this->pdo->prepare("DELETE FROM productos WHERE id = ?");
             $consulta->execute([$id]);
         } catch (Exception $e) {
             die($e->getMessage());
@@ -151,6 +151,17 @@ class Producto {
         }
     }
 
+    public function obtenerPorId($id) {
+        try {
+            $consulta = $this->pdo->prepare("SELECT * FROM producto WHERE id = ?");
+            $consulta->execute([$id]);
+            $resultado = $consulta->fetch(PDO::FETCH_OBJ);
+            return $resultado ? $resultado : null;
+        } catch (Exception $e) {
+            die("Error al obtener el producto: " . $e->getMessage());
+        }
+    }
+    
     public function obtenerInventario($producto_id) {
         try {
             $consulta = $this->pdo->prepare("SELECT cantidad FROM inventario WHERE producto_id = ?");
@@ -164,7 +175,7 @@ class Producto {
 
     public function ProductoExiste($nombre) {
         try {
-            $consulta = $this->pdo->prepare("SELECT COUNT(*) FROM producto WHERE nombre = ?");
+            $consulta = $this->pdo->prepare("SELECT COUNT(*) FROM productos WHERE nombre = ?");
             $consulta->execute([$nombre]);
             $count = $consulta->fetchColumn();
             return $count > 0;
@@ -172,16 +183,6 @@ class Producto {
             die($e->getMessage());
         }
     }
-
-    // Método para obtener un producto por su ID
-    public function obtenerPorId($id) {
-        try {
-            $consulta = $this->pdo->prepare("SELECT * FROM producto WHERE id = ?");
-            $consulta->execute([$id]);
-            return $consulta->fetch(PDO::FETCH_OBJ); // Devuelve un objeto con los datos del producto
-        } catch (Exception $e) {
-            die($e->getMessage());
-        }
-    }
+    
+    
 }
-?>

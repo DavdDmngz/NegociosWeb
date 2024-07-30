@@ -4,7 +4,7 @@ define('DB_HOST', 'localhost');
 define('DB_PORT', '3306');
 define('DB_NAME', 'techstore');
 define('DB_USER', 'root');
-define('DB_PASS', '0955');
+define('DB_PASS', 'kacl1997');
 define('DB_CHARSET', 'utf8');
 
 $email = $_POST['email'];

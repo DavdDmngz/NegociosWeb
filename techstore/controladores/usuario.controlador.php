@@ -66,7 +66,7 @@ class UsuarioControlador {
         header("location:?c=usuario&a=inicio");
     }
 
-    public function Nuevousuario() {
+    public function crear() {
         $user = new Usuario();
         $user->setusr_nombre($_POST['nombre']);
         $user->setusr_apellido($_POST['apellido']);
