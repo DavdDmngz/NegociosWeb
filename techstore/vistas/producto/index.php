@@ -25,7 +25,6 @@
                                 <tr>
                                     <th>Id</th>
                                     <th>Nombre</th>
-                                    <th>Descripción</th>
                                     <th>Categoria</th>
                                     <th>Precio</th>
                                     <th>Imagen</th>
@@ -36,10 +35,17 @@
                                 <tr>
                                     <td><?=$r->id?></td>
                                     <td><?=$r->nombre?></td>
-                                    <td><?=$r->descripcion?></td>
                                     <td><?=$r->id_categoria?></td>
                                     <td><?=$r->precio?></td>
                                     <td><?=$r->imagen?></td>
+                                    <td>
+                                        <!-- Botón para ver los detalles del pedido -->
+                                        <a href="detalle_pedido.php?pedido_id=<?= htmlspecialchars($r->pedido_id) ?>" class="btn btn-info">Editar</a>
+                                    </td>
+                                    <td>
+                                        <!-- Botón para ver los detalles del pedido -->
+                                        <a href="detalle_pedido.php?pedido_id=<?= htmlspecialchars($r->pedido_id) ?>" class="btn btn-info">Eliminar</a>
+                                    </td>
                                 </tr>
                             <?php endforeach; ?>
                             </tbody>

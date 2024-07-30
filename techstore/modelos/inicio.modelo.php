@@ -1,5 +1,7 @@
 <?php
+
     class Inicio{
+        private $pdo;
         public function __CONSTRUCT() {
             $this->pdo = BaseDatos::conectar();
         }

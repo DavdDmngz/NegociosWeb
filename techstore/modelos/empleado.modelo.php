@@ -1,6 +1,6 @@
 <?php
 
-class Usuario {
+class Empleado {
     private $pdo;
 
     private $user_id;
@@ -74,17 +74,7 @@ class Usuario {
 
     public function Listar() {
         try {
-            $consulta = $this->pdo->prepare("SELECT * FROM usuarios");
-            $consulta->execute();
-            return $consulta->fetchAll(PDO::FETCH_OBJ);
-        } catch(Exception $e) {
-            die($e->getMessage());
-        }
-    }
-
-    public function ListarCliente() {
-        try {
-            $consulta = $this->pdo->prepare("SELECT * FROM usuarios WHERE rol='3'");
+            $consulta = $this->pdo->prepare("SELECT * FROM usuarios WHERE rol='2'");
             $consulta->execute();
             return $consulta->fetchAll(PDO::FETCH_OBJ);
         } catch(Exception $e) {
@@ -107,22 +97,6 @@ class Usuario {
             die($e->getMessage());
         }
     }
-
-    public function Login($email, $contrasena) {
-        try {
-            $consulta = $this->pdo->prepare("SELECT * FROM usuarios WHERE email = ?");
-            $consulta->execute(array($email));
-            $user = $consulta->fetch(PDO::FETCH_OBJ);
-    
-            if ($user && password_verify($contrasena, $user->contrasena)) {
-                return $user;
-            } else {
-                return null;
-            }
-        } catch(Exception $e) {
-            die($e->getMessage());
-        }
-    }
     public function EmailExiste($email) {
         try {
             $consulta = $this->pdo->prepare("SELECT COUNT(*) FROM usuarios WHERE email = ?");
@@ -133,7 +107,5 @@ class Usuario {
             die($e->getMessage());
         }
     }
-    
-    
 }
 ?>

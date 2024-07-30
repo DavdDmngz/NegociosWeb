@@ -1,5 +1,4 @@
 <?php
-
 require_once "modelos/usuario.modelo.php";
 require_once "helpers/session.php";
 
@@ -15,7 +14,7 @@ class UsuarioControlador {
         if (Session::isLoggedIn()) {
             if (Session::isAdmin()) {
                 require_once "vistas/sidebar.vertical.php";
-                require_once "vistas/admin/index.php"; // Vista para administrador
+                require_once "vistas/usuario/index.php"; // Vista para administrador
             } else {
                 require_once "vistas/header.session.php";
                 require_once "vistas/menu.php";
@@ -42,23 +41,6 @@ class UsuarioControlador {
         require_once "vistas/scripts.php";
     }
 
-    public function Crear() {
-        $user = new Usuario();
-        $user->setusr_nombre($_POST['nombre']);
-        $user->setusr_apellido($_POST['apellido']);
-        $user->setusr_email($_POST['email']);
-        $user->setusr_pass($_POST['contrasena']);
-        $user->setusr_rol(3); // Asignar rol por defecto, cambiar según sea necesario
-    
-        if ($this->modelo->EmailExiste($user->getusr_email())) {
-            header("location:?c=usuario&a=signup&error=email_exists");
-        } else {
-            $this->modelo->Insertar($user);
-            header("location:?c=usuario&a=inicio");
-        }
-    }
-    
-
     public function TryLogin() {
         $email = $_POST['email'];
         $contrasena = $_POST['contrasena'];
@@ -75,13 +57,30 @@ class UsuarioControlador {
                 header("location:?c=inicio&a=home");
             }
         } else {
-            header("location:?c=inicio&a=login&error=1");
+            header("location:?c=usuario&a=login&error=1");
         }
     }
 
     public function Logout() {
         Session::destroy();
-        header("location:?c=inicio&a=inicio");
+        header("location:?c=usuario&a=inicio");
+    }
+
+    public function Nuevousuario() {
+        $user = new Usuario();
+        $user->setusr_nombre($_POST['nombre']);
+        $user->setusr_apellido($_POST['apellido']);
+        $user->setusr_email($_POST['email']);
+        $user->setusr_pass($_POST['contrasena']);
+        $user->setusr_rol(3); // Asignar rol por defecto, cambiar según sea necesario
+    
+        if ($this->modelo->EmailExiste($user->getusr_email())) {
+            header("location:?c=usuario&a=signup&error=email_exists");
+        } else {
+            $this->modelo->Insertar($user);
+            header("location:?c=usuario&a=inicio");
+        }
     }
 }
 ?>
+

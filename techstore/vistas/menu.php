@@ -27,7 +27,7 @@
                                         </ul>
                                     </li>
                                     <li><a href="maps.html"><i class="ti-map-alt"></i> <span>Tiendas</span></a></li>
-                                    <li><a href="maps.html"><i class="ti-shopping-cart"></i> <span>Carrito</span></a></li>
+                                    <li><a href="?c=carrito&a=ver"><i class="ti-shopping-cart"></i> <span>Carrito</span></a></li>
                                     <li>
                                         <a href="javascript:void(0)"><i class="ti-user"></i><span>Soporte</span></a>
                                         <ul class="submenu">

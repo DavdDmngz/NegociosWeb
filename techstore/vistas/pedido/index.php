@@ -11,13 +11,9 @@
                             <thead class="bg-light text-capitalize">
                                 <tr>
                                     <th>Pedido Id</th>
-                                    <th>Producto</th>
-                                    <th>Nombre</th>
-                                    <th>Categoria</th>
-                                    <th>Precio</th>
-                                    <th>Cantidad</th>
-                                    <th>Total</th>
-                                    <th>Detalles</th> <!-- Nueva columna para el botón -->
+                                    <th>Usuario Id</th>
+                                    <th>Fecha</th>
+                                    <th>Detalles</th> <!-- Columna para el botón de detalles -->
                                 </tr>
                             </thead>
                             <tbody>
@@ -25,12 +21,8 @@
                                 <?php foreach ($pedidos as $r): ?>
                                     <tr>
                                         <td><?= htmlspecialchars($r->pedido_id) ?></td>
-                                        <td><?= htmlspecialchars($r->producto) ?></td>
-                                        <td><?= htmlspecialchars($r->nombre) ?></td>
-                                        <td><?= htmlspecialchars($r->id_categoria) ?></td>
-                                        <td><?= htmlspecialchars($r->precio) ?></td>
-                                        <td><?= htmlspecialchars($r->cantidad) ?></td>
-                                        <td><?= htmlspecialchars($r->total) ?></td>
+                                        <td><?= htmlspecialchars($r->id_usuario) ?></td>
+                                        <td><?= htmlspecialchars($r->fecha) ?></td>
                                         <td>
                                             <!-- Botón para ver los detalles del pedido -->
                                             <a href="detalle_pedido.php?pedido_id=<?= htmlspecialchars($r->pedido_id) ?>" class="btn btn-info">Ver Detalles</a>
@@ -39,7 +31,7 @@
                                 <?php endforeach; ?>
                             <?php else: ?>
                                 <tr>
-                                    <td colspan="8">No se encontraron pedidos.</td>
+                                    <td colspan="4">No se encontraron pedidos.</td>
                                 </tr>
                             <?php endif; ?>
                             </tbody>

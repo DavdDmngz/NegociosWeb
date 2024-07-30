@@ -11,7 +11,7 @@
                 <div class="menu-inner">
                     <nav>
                         <ul class="metismenu" id="menu">
-                        <li class="active"><a href="?c=inicio&a=inicio"><i class="ti-map-alt"></i><span>Inicio</span></a></li>
+                        <li class="active"><a href="?c=usuario&a=inicio"><i class="ti-map-alt"></i><span>Inicio</span></a></li>
                             <li class="collapsed">
                                 <a href="javascript:void(0)" aria-expanded="true"><i class="ti-layout-grid2-alt"></i><span>Catálogo</span></a>
                                 <ul class="collapse">
@@ -30,18 +30,11 @@
                             <li class="collapsed">
                                 <a href="javascript:void(0)" aria-expanded="true"><i class="ti-bag"></i><span>Personal</span></a>
                                 <ul class="collapse">
-                                    <li><a href="#">Empleado</a></li>
-                                    <li><a href="#">Agregar Empleado</a></li>
+                                    <li><a href="?c=empleado&a=inicio">Empleado</a></li>
+                                    <li><a href="?c=empleado&a=agregar">Agregar Empleado</a></li>
                                 </ul>
                             </li>
-                            <li class="collapsed">
-                                <a href="javascript:void(0)" aria-expanded="true"><i class="ti-truck"></i><span>Pedidos</span></a>
-                                <ul class="collapse">
-                                    <li><a href="?c=pedido&a=inicio">Gestionar pedidos</a></li>
-                                    <li><a href="?c=detalle&a=verDetalles&id=123">Detalles</a></li>
-                                    </ul>
-                                </li>
-                            </li>
+                            <li class="collapsed"><a href="?c=pedido&a=inicio"><i class="ti-truck"></i><span>Pedidos</span></a></li>
                             <li class="active"><a href="?c=inicio&a=logout"><i class="ti-map-alt"></i><span>Cerrar sesion</span></a></li>
                         </ul>
                     </nav>

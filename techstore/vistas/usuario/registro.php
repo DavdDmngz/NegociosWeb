@@ -10,7 +10,7 @@
 <div class="login-area login-s2">
     <div class="container">
         <div class="login-box ptb--100">
-            <form id="registroForm" method="POST" action="?c=usuario&a=crear">
+            <form id="registroForm" method="POST" action="?c=usuario&a=Crear">
                 <div class="login-form-head">
                     <h4>Crear cuenta</h4>
                     <p>Crea una cuenta para acceder a nuevas funciones.</p>

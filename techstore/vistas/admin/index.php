@@ -1,41 +1,49 @@
-<!-- Carousel Start -->
-<div class="container-fluid mb-3">
-        <div class="row px-xl-5">
-            <h3>Cantidad de usuarios</h3>
-            <?php $p=$this->modelo->Cantidad();
-            echo "<h3> =" . $p->CANTIDAD . "</h3>";?>
-        </div>
-    </div>
-<!-- Carousel End -->
-<div class="row">
-    <div class="col-md-12">
-        <div class="card">
-            <div class="card-body">
-            <button class="btn btn-primary" type="button">Botón</button>
-                <table class="table table-hover table-bordered" id="sampleTable">
-                    <thead>
-                        <tr>
-                            <th>Id</th>
-                            <th>Nombre</th>
-                            <th>Email</th>
-                            <th>Contraseña</th>
-                            <th>Fecha de creación</th>
-                            <th>Última actualización</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                    <?php foreach ($this->modelo->Listar() as $r): ?>
-                        <tr>
-                            <td><?=$r->id?></td>
-                            <td><?=$r->nombre?></td>
-                            <td><?=$r->email?></td>
-                            <td><?=$r->contrasena?></td>
-                            <td><?=$r->created_at?></td>
-                            <td><?=$r->updated_at?></td>
-                        </tr>
-                    <?php endforeach; ?>
-                    </tbody>
-                </table>
+<div class="main-content-inner">
+    <div class="row">
+        <div class="col-12 mt-5">
+            <div class="card">
+                <div class="card-body">
+                    <div>
+                        <h4 class="header-title">Productos</h4>
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            <div class="grid-col">
+                                Producto
+                            </div>
+                        </div>
+                        <div class="col col-lg-2">
+                        <button type="button" class="btn btn-flat btn-danger btn-s" onclick="location.href='?c=producto&a=agregar'">Nuevo producto</button>
+                        </div>
+                        <div class="col col-lg-2">
+                        <button type="button" class="btn btn-flat btn-danger btn-s" onclick="location.href='?c=producto&a=agregar'">Modificar inventario</button>
+                        </div>
+                    </div>
+                    <div class="data-tables">
+                        <table id="dataTable" class="text-center">
+                            <thead class="bg-light text-capitalize">
+                                <tr>
+                                    <th>Id</th>
+                                    <th>Nombre</th>
+                                    <th>Email</th>
+                                    <th>Fecha de creación</th>
+                                    <th>Última actualización</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                            <?php foreach ($this->modelo->Listar() as $r): ?>
+                                <tr>
+                                    <td><?=$r->id?></td>
+                                    <td><?=$r->nombre?></td>
+                                    <td><?=$r->email?></td>
+                                    <td><?=$r->created_at?></td>
+                                    <td><?=$r->updated_at?></td>
+                                </tr>
+                            <?php endforeach; ?>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
